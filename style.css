@@ -1,0 +1,36 @@
+.body {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(72, 66, 66);
+    color:antiquewhite;
+   
+}
+
+.buttonContainer {
+    display: flex;
+    flex-wrap: wrap;
+    height: 625x;
+    width: 500px;
+    background-color: rgb(72, 66, 66);
+    color:antiquewhite;
+    font-size: xx-large;
+    border: 3px solid black;
+}
+
+#button {
+    font-size: xx-large;
+    background-color: orange;
+    height: 125px;
+    width: 125px;
+    border: 3px solid black;
+}
+
+#display {
+    font-size: 50px;
+    color: black;
+    background-color: rgb(225, 215, 195);
+    height: 119px;
+    width: 369px;
+    border: 3px solid black;
+    text-align: left;
+}
