@@ -19,14 +19,11 @@ function divide (num1, num2) {
 // console.log(multiply(2,3));
 // console.log(divide(2,3));
 
-
-
-
-function operate(num1, num2, operator) {
-
-    return 
-
+function operate(firstNum, secondNum, operator) {
+    return operator(firstNum, secondNum)
 }
+// console.log(operate(2, 3, subtract));
+
 
 
 // let operator = prompt();
