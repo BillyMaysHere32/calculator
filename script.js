@@ -18,12 +18,11 @@ function divide (num1, num2) {
 // console.log(subtract(2,3));
 // console.log(multiply(2,3));
 // console.log(divide(2,3));
-
-function operate(firstNum, secondNum, operator) {
-    return operator(firstNum, secondNum)
-}
-//console.log(operate(2.3, 3, subtract));
-
+let firstNum = "";
+let secondNum = "";
+let currentOp ="";
+const currentDisplay = document.getElementById('initialDisplay')
+const endDisplay = document.getElementById('finalDisplay')
 
 const numButtons = document.querySelectorAll('#numButton');
  // we use the .forEach method to iterate through each button
@@ -34,20 +33,51 @@ const numButtons = document.querySelectorAll('#numButton');
         });
     });
     function displayNum(number) {
-        currentDisplay.textContent += number
+        currentDisplay.textContent += number;
       }
-const currentDisplay = document.getElementById('display')
+
+const opButtons = document.querySelectorAll('#opButton');
+opButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        displayOp(button.textContent);
+        });
+    });
+    function displayOp(operator) {
+        calcNum();
+        firstNum = currentDisplay.textContent;
+        currentOp = operator;
+        endDisplay.textContent = `${firstNum} ${currentOp}`
+
+      }
+
+      function calcNum() {
+        secondNum = currentDisplay.textContent;
+        currentDisplay.textContent =
+        operate(firstNum, secondNum, currentOp);
+        endDisplay.textContent = `${firstNum} ${currentOp}`
+      }
 
 
 
+function operate(firstNum, secondNum, operator) {
+    if (operator = "+") {
+        return add(firstNum, secondNum);
+    } else if (operator = "-") {
+        return subtract(firstNum, secondNum);
+    } else if (operator = "*") {
+        return multiply(firstNum, secondNum);
+    } else if (operator = "/") {
+        return divide(firstNum, secondNum);
+    }
+}
+//console.log(operate(2.3, 3, subtract));
 
-
-
-// let addButton = add;
-// let subtractButton = subtract;
-// let multiplyButton = multiply;
-// let divideButton = divide;
-
+const clearButton = document.querySelectorAll('clearButton');
+clearButton.addEventListener('click', clearScreen);
+const clearScreen = () => {
+    currentDisplay.textContent = ''
+    finalDisplay.textContent = ''
+}
 
 
 
