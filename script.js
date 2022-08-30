@@ -9,6 +9,7 @@ const numButtons = document.querySelectorAll('#numButton');
 const opButtons = document.querySelectorAll('#opButton');
 const equalsButton = document.getElementById('equalsButton')
 const clearButton = document.getElementById('clearButton')
+const decButton = document.getElementById('decButton')
 
 equalsButton.addEventListener('click', calcNum)
 clearButton.addEventListener('click', clearScreen);
@@ -83,7 +84,14 @@ console.log(num2);
             return null
         }
       }
-
+decButton.addEventListener('click', addDec);
+function addDec() {
+    if (shouldResetScreen) resetScreen()
+    if (currentDisplay.textContent === '')
+    currentDisplay.textContent = '0'
+    if (currentDisplay.textContent.includes('.')) return
+    currentDisplay.textContent += '.'
+  }
 
 function resetScreen() {
     currentDisplay.textContent = '';

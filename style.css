@@ -17,7 +17,7 @@
     border: 3px solid black;
 }
 
-#button {
+#button, #numButton, #opButton, #clearButton, #equalsButton, #decButton {
     font-size: xx-large;
     background-color: orange;
     height: 125px;
