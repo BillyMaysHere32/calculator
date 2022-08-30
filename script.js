@@ -7,6 +7,18 @@ const currentDisplay = document.getElementById('initialDisplay')
 const endDisplay = document.getElementById('finalDisplay')
 const numButtons = document.querySelectorAll('#numButton');
 const opButtons = document.querySelectorAll('#opButton');
+const equalsButton = document.getElementById('equalsButton')
+const clearButton = document.getElementById('clearButton')
+
+equalsButton.addEventListener('click', calcNum)
+clearButton.addEventListener('click', clearScreen);
+function clearScreen() {
+    currentDisplay.textContent = "";
+    finalDisplay.textContent = "";
+    firstNum = "";
+    secondNum = "";
+    currentOp = null;
+}
 
 numButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -37,10 +49,12 @@ function displayOp(operator) {
 }
 
 function calcNum() {
+    if (currentOp === null || shouldResetScreen) return;
     secondNum = currentDisplay.textContent;
     currentDisplay.textContent =
     operate(firstNum, secondNum, currentOp);
-    endDisplay.textContent = `${firstNum} ${currentOp}`
+    endDisplay.textContent = `${firstNum} ${currentOp}`;
+    currentOperation = null;
 }
 
 
@@ -57,19 +71,6 @@ function operate(firstNum, secondNum, operator) {
     }
 }
 // //console.log(operate(2.3, 3, subtract));
-
-// const clearButton = document.querySelectorAll('clearButton');
-// clearButton.addEventListener('click', clearScreen);
-// const clearScreen = () => {
-//     currentDisplay.textContent = ''
-//     finalDisplay.textContent = ''
-// }
-
-// let equalsButton = document.getElementById('equals')
-// equalsButton.addEventListener('click', () => {
-
-
-// }
 
 function resetScreen() {
     currentDisplay.textContent = ''
