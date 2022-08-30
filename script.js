@@ -49,47 +49,62 @@ function displayOp(operator) {
 }
 
 function calcNum() {
-    if (currentOp === null || shouldResetScreen) return;
+    if (currentOp === null || shouldResetScreen) return
     secondNum = currentDisplay.textContent;
-    currentDisplay.textContent =
-    operate(firstNum, secondNum, currentOp);
-    endDisplay.textContent = `${firstNum} ${currentOp}`;
-    currentOperation = null;
+    currentDisplay.textContent = roundResult(operate(firstNum, secondNum, currentOp));
+    endDisplay.textContent = `${firstNum} ${currentOp} ${secondNum} =`
+    currentOp = null;
+    
 }
 
+function roundResult(number) {
+    console.log(number);
+    return Math.round(number * 100000) / 100000
+  }
 
 
-function operate(firstNum, secondNum, operator) {
-    if (operator = "+") {
-        return add(firstNum, secondNum);
-    } else if (operator = "-") {
-        return subtract(firstNum, secondNum);
-    } else if (operator = "*") {
-        return multiply(firstNum, secondNum);
-    } else if (operator = "/") {
-        return divide(firstNum, secondNum);
-    }
-}
-// //console.log(operate(2.3, 3, subtract));
+function operate(num1, num2, operator) {
+console.log(operator);
+console.log(num1);
+console.log(num2);    
+    num1 = Number(num1)
+    num2 = Number(num2)
+        switch (operator) {
+          case '+':
+            return add(num1, num2)
+          case '-':
+            return subtract(num1, num2)
+          case '*':
+            return multiply(num1, num2)
+          case '/':
+            if (num2 === 0) return null
+            else return divide(num1, num2)
+          default:
+            return null
+        }
+      }
+
 
 function resetScreen() {
-    currentDisplay.textContent = ''
-    shouldResetScreen = false
+    currentDisplay.textContent = '';
+    shouldResetScreen = false;
 }
 
-function add (num1, num2) {
+function add(num1, num2) {
+    // console.log(num1);
+    // console.log(num2);
     return num1 + num2;
 }
 
-function subtract (num1, num2) {
+function subtract(num1, num2) {
     return num1 - num2;
 }
 
-function multiply (num1, num2) {
+function multiply(num1, num2) {
     return num1 * num2;
 }
 
-function divide (num1, num2) {
+function divide(num1, num2) {
     return num1 / num2;
 }
 
